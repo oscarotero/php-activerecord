@@ -339,12 +339,12 @@ class AdapterTest extends DatabaseTest
 
 	public function test_query_column_info()
 	{
-		$this->assert_greater_than(0,count($this->conn->query_column_info("authors")));
+		$this->assert_greater_than(0,$this->conn->query_column_info("authors")->columnCount());
 	}
 
 	public function test_query_table_info()
 	{
-		$this->assert_greater_than(0,count($this->conn->query_for_tables()));
+		$this->assert_greater_than(0,$this->conn->query_for_tables()->columnCount());
 	}
 
 	public function test_query_table_info_must_return_one_field()
@@ -398,7 +398,7 @@ class AdapterTest extends DatabaseTest
 
 	public function test_datetime_to_string()
 	{
-		$datetime = '2009-01-01 01:01:01 EST';
+		$datetime = '2009-01-01 01:01:01';
 		$this->assert_equals($datetime,$this->conn->datetime_to_string(date_create($datetime)));
 	}
 
